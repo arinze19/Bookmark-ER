@@ -13,21 +13,18 @@
     <script src="app.js" defer></script>
   </head>
   <body>
-    <section id="assignment">
-      <!-- 1) Output your name -->
-      <h2> {{ name }}</h2>
-      <!-- 2) Output your age -->
-      <p>{{ age }}</p>
-      <!-- 3) Output your age + 5 -->
-      <p>{{ ageinfive() }}</p>
-      <!-- 4) Output a random number (0 to 1) -->
-      <p>Favorite Number: {{ favnumber() }}</p>
-      <div>
-        <!-- 5) Display some image you found via Google -->
-        <img v-bind:src="img" />
-      </div>
-      <!-- 6) Prepopulate the input field with your name via the "value" attribute -->
-      <input type="text" v-bind:value="name" />
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+    <section id="user-goals">
+      <h2>My course goals</h2>
+      <input type="text" v-model="enteredGoalValue" />
+      <button @click="addGoal">Add Goal</button>
+
+      <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
+      <ul v-else>
+        <li v-for="goal in goals">{{ goal }}</li>
+      </ul>
     </section>
   </body>
 </html>
