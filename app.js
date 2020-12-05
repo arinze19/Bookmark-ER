@@ -18,6 +18,6 @@ const app = Vue.createApp({
 })
 
 
-app.mount('#user-goal')
+app.mount('#assignment')
 
 
