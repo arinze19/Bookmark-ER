@@ -14,6 +14,11 @@ const app = Vue.createApp({
             this.taskList.push(this.task)
             this.task = ''
         }
+    },
+    computed: {
+        buttonDisplay() {
+            return this.display ? 'Hide List' : 'Show List'
+        }
     }
 })
 
