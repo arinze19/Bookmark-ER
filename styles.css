@@ -99,6 +99,17 @@ textarea {
   padding: 0;
 }
 
+.clipboard {
+  margin-right: 9px;
+  color: darkgray;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.fa-clipboard-check {
+  color: #2dcc2d
+}
+
 .delete-button {
   color: red;
 }

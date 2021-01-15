@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/vue@next"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+    <title>L8r | Store your tweets for a later day</title>
   </head>
   <body>
     <div id="app">
@@ -20,7 +23,7 @@
             <div class="reactions">
               <span class="like" v-if="liked" @click="like">💖</span>
               <span class="like" v-else @click="like">
-                <span> ❤ </span>
+                <span> ♡ </span>
               </span>
             </div>
           </div>
@@ -41,11 +44,19 @@
         <li class="tweet-list" v-for="tweet in tweets" :id="tweet.id">
           <div>
             <div class="tweet-content">
-              <img :src="sourceImg" class="logo small-img" alt="Party on Mars twitter" />
+              <img
+                :src="sourceImg"
+                class="logo small-img"
+                alt="Party on Mars twitter"
+              />
               <div class="tweet">
                 <a href="https://twitter.com/PartyOnMars_">🌕 </a>
                 <span>@PartyOnMars_ ·{{ getTimestamp }}</span>
-                <p class="tweet-text"> {{ tweet.value }}</p>
+                <p class="tweet-text">{{ tweet.value }}</p>
+              </div>
+              <div class="clipboard" @click="clipItem">
+                <i class="fas fa-clipboard-check" v-if="clipCopied"></i>
+                <i class="fas fa-clipboard" v-else></i>
               </div>
               <div class="delete-button">
                 <i class="fas fa-times" @click="removeItem"></i>
