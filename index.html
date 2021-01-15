@@ -55,7 +55,6 @@
                 <p class="tweet-text">{{ tweet.value }}</p>
               </div>
               <div class="clipboard" @click="clipItem">
-                <i class="fas fa-clipboard-check" v-if="clipCopied"></i>
                 <i class="fas fa-clipboard" v-else></i>
               </div>
               <div class="delete-button">
@@ -65,6 +64,11 @@
           </div>
         </li>
       </ul>
+      <transition name="dialog">
+        <div class="clipboard-status" v-if="clipped"> 
+          <p> 🌟  Tweet has been added to clipboard</p>
+        </div>
+    </transition>
     </div>
   </body>
 

@@ -106,10 +106,44 @@ textarea {
   transition: all 0.3s ease-in-out;
 }
 
+.clipboard-status {
+  width: 400px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #1da0f270;
+  display: fixed;
+  padding: 5px;
+  z-index: 2;
+  margin: 0 auto;
+}
+
 .fa-clipboard-check {
   color: #2dcc2d
 }
 
 .delete-button {
   color: red;
+}
+
+
+/* ======================================= transition classes ========================== */
+
+.dialog-enter-from,
+.dialog-leave-to {
+  opacity: 0;
+  transform: translateY(30px)
+}
+
+.dialog-enter-active {
+    transition: all 0.5s ease-out
+}
+
+.dialog-leave-active {
+    transition: all 0.5s ease-in 
+}
+
+.dialog-enter-to, 
+.dialog-leave-from {
+  opacity: 1;
+  transform: translateY(-30px)
 }

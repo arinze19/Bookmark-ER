@@ -5,7 +5,7 @@ const app = Vue.createApp({
       tweetCharacters: "",
       remainingCharacters: 280,
       liked: false,
-      clipCopied: false,
+      clipped: false,
       tweets: JSON.parse(localStorage.getItem('tweets')) || [],
       sourceImg:
         "https://pbs.twimg.com/profile_images/1278577817014411264/wRS_3jPo_400x400.jpg",
@@ -56,10 +56,10 @@ const app = Vue.createApp({
       const value   = tweet.value
 
       await navigator.clipboard.writeText(value)
-      this.clipCopied = true
+      this.clipped = true
       setTimeout(() => {
-        this.clipCopied = false
-      }, 500)
+        this.clipped = false
+      }, 3500)
     }
   },
 
