@@ -1,119 +1,104 @@
 * {
-  box-sizing: border-box;
-}
-
-html {
-  font-family: 'Jost', sans-serif;
+  box-sizing: border-box
 }
 
 body {
-  margin: 0;
+  background-color: #e6ecf0;
+  font-family: sans-serif;
 }
 
-header {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  padding: 0.5rem;
-  background-color: #880017;
-  color: white;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-section {
-  width: 90%;
-  max-width: 40rem;
-  margin: auto;
-}
-
-.healthbar {
-  width: 100%;
-  height: 40px;
-  border: 1px solid #575757;
-  margin: 1rem 0;
-  background: #fde5e5;
-}
-
-.healthbar__value {
-  background-color: #00a876;
-  width: 100%;
-  height: 100%;
-}
-
-.container {
-  text-align: center;
-  padding: 0.5rem;
-  margin: 1rem auto;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 12px;
-}
-
-#monster h2,
-#player h2 {
-  margin: 0.25rem;
-}
-
-#controls {
+.tweet-content {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  padding: 10px;
 }
 
-button {
-  font: inherit;
-  border: 1px solid #88005b;
-  background-color: #88005b;
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 12px;
-  margin: 1rem;
-  width: 12rem;
+.status {
+  width: 600px;
+  margin: 20px auto;
+  border-radius: 3px;
+  background-color: white;
+}
+
+.like {
   cursor: pointer;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }
 
-button:focus {
-  outline: none;
+.logo {
+  height: 75px;
+  border-radius: 50%;
+  padding: 5px;
 }
 
-button:hover,
-button:active {
-  background-color: #af0a78;
-  border-color: #af0a78;
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
+.characters-remaining {
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
 }
 
-button:disabled {
-  background-color: #ccc;
-  border-color: #ccc;
-  box-shadow: none;
-  color: #3f3f3f;
-  cursor: not-allowed;
+.characters-remaining button {
+  background-color: #1DA1F2;
+  border: none;
+  color: whitesmoke;
+  padding: 9px;
+  cursor: pointer;
+  border-radius: 15px;
 }
 
-#log ul {
-  list-style: none;
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+span {
+  color: grey;
+}
+
+.comment-bar {
+  background-color: #f5f8fa;
+  padding: 10px;
+  border-top: 1px solid #e6ecf0;
+}
+
+textarea {
+  width: 100%;
+  height: 60px;
+  border: 1px solid #1DA1F2;
+  border-radius: 7px;
+  padding: 5px;
+  resize: none;
+}
+
+.tweet-list {
+  width: 600px;
+  margin:0 auto;
+  background-color: white;
+  list-style-type: none;
+}
+
+.tweet-list:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.tweet-list:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.tweet-list img {
+  height: 50px;
+}
+
+.tweet-text {
+  width: 500px;
+}
+
+ ul {
   margin: 0;
   padding: 0;
 }
 
-#log li {
-  margin: 0.5rem 0;
-}
-
-.log--player {
-  color: #7700ff;
-}
-
-.log--monster {
-  color: #da8d00;
-}
-
-.log--damage {
+.delete-button {
   color: red;
-}
-
-.log--heal {
-  color: green;
 }

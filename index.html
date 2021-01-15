@@ -3,55 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vue Basics</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://unpkg.com/vue@next" defer></script>
-    <script src="app.js" defer></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Document</title>
   </head>
   <body>
-    <header>
-      <h1>Monster Slayer</h1>
-    </header>
-    <div id="game">
-      <section id="monster" class="container">
-        <h2>Monster Health</h2>
-        <div class="healthbar">
-          <div class="healthbar__value" :style="monsterHealthBarStyle"></div>
+    <div id="app">
+      <div class="status">
+        <div class="tweet-content">
+          <img :src="sourceImg" class="logo" alt="Party on Mars twitter" />
+          <div class="tweet">
+            <a href="https://twitter.com/PartyOnMars_">🌕 </a>
+            <span>@PartyOnMars_ ·{{ getTimestamp }}</span>
+            <p class="tweet-text">Hello, World!</p>
+            <div class="reactions">
+              <span class="like" v-if="liked" @click="like">💖</span>
+              <span class="like" v-else @click="like">
+                <span> ❤ </span>
+              </span>
+            </div>
+          </div>
         </div>
-      </section>
-      <section id="player" class="container">
-        <h2>Your Health</h2>
-        <div class="healthbar">
-          <div class="healthbar__value" :style="playerHealthBarStyle"></div>
+        <div class="comment-bar">
+          <textarea
+            placeholder="tweet your reply"
+            v-model="tweetCharacters"
+            @keyup="checkTweetLength"
+          ></textarea>
+          <span class="characters-remaining">
+            {{ remainingCharacters }} characters remaining
+            <button @click="addTweet">Add Tweet</button>
+          </span>
         </div>
-      </section>
-      <section class="container" v-if="winner">
-        <h2>Game Over</h2>
-        <h3 v-if="winner === 'Monster'">You lost!</h3>
-        <h3 v-else-if="winner === 'Player'">You Won!</h3>
-        <h3 v-else="winner === 'Draw'">Its a tie!</h3>
-        <button @click=startNewGame>Start New Game</button>
-      </section>
-      <section id="controls" v-else>
-        <button @click="attackMonster">ATTACK</button>
-        <button :disabled="mayUseSpecialAttack" @click="specialAttackMonster">SPECIAL ATTACK</button>
-        <button @click="healPlayer">HEAL</button>
-        <button @click="surrender">SURRENDER</button>
-      </section>
-      <section id="log" class="container">
-        <h2>Battle Log</h2>
-        <ul>
-          <li v-for="logMessage in logMessages"> 
-            <span :class="{'log--player': logMessage.actionBy === 'Player', 'log--monster': logMessage.actionBy === 'Monster'}">{{ logMessage.actionBy === 'Player' ? 'Player' : 'Monster'}}</span>
-            <span v-if="logMessage.actionType === 'Heals'"> heals himself for <span class="log--heal">{{ logMessage.actionValue }}</span></span>
-            <span v-else> attack and deals <span class="log--damage">{{ logMessage.actionValue }}</span></span>
-          </li>
-        </ul>
-      </section>
+      </div>
+      <ul>
+        <li class="tweet-list" v-for="tweet in tweets" :id="tweet.id">
+          <div>
+            <div class="tweet-content">
+              <img :src="sourceImg" class="logo small-img" alt="Party on Mars twitter" />
+              <div class="tweet">
+                <a href="https://twitter.com/PartyOnMars_">🌕 </a>
+                <span>@PartyOnMars_ ·{{ getTimestamp }}</span>
+                <p class="tweet-text"> {{ tweet.value }}</p>
+              </div>
+              <div class="delete-button">
+                <i class="fas fa-times" @click="removeItem"></i>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </body>
+
+  <!-- ♡ -->
+
+  <script src="./app.js"></script>
 </html>
