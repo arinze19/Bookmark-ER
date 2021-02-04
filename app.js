@@ -1,88 +1,91 @@
-const app = Vue.createApp({
-  data() {
-    return {
-      maxCharactersLength: 280,
-      tweetCharacters: "",
-      remainingCharacters: 280,
-      liked: false,
-      clipped: false,
-      tweets: JSON.parse(localStorage.getItem('tweets')) || [],
-      sourceImg:
-        "https://pbs.twimg.com/profile_images/1278577817014411264/wRS_3jPo_400x400.jpg",
-    };
-  },
+const input   = document.querySelector("input[type=text]");
+const overlay = document.querySelector(".overlay");
+const floater = document.querySelector(".floater");
+const body    = document.body;
 
-  methods: {
-    like() {
-      this.liked = !this.liked;
-    },
+const bookmarkForm  = document.querySelector(".bookmark-form");
+const bookmarksList = document.querySelector(".bookmarks-list");
+const bookmarkInput = bookmarkForm.querySelector('input[type="text"]');
+const bookmarks     = JSON.parse(localStorage.getItem("bookmarks")) || [];
+const apiUrl        = "https://opengraph.io/api/1.0/site";
+const appId         = "58858c7bcf07b61e64257391";
 
-    addTweet() {
-      if(this.tweetCharacters === "") return
+// const myUrl         = encodeURIComponent('https://google.com');  
 
-      const id = new Date().toISOString();
-      const newTweet = {
-        value: this.tweetCharacters,
-        id: id
+fillBookmarksList(bookmarks); // fill bookmarks list from local storage on entering the page
+
+//=================================================================================== listeners
+input.addEventListener("focusin", focus);
+input.addEventListener("focusout", outOfFocus);
+
+function focus() {
+  body.classList.add("show-floater");
+}
+
+function outOfFocus() {
+  if (body.classList.contains("show-floater")) {
+    body.classList.remove("show-floater");
+  }
+}
+
+//=============================================== Form submission
+bookmarkForm.addEventListener("submit", createBookmark);
+bookmarksList.addEventListener("click", removeBookmark);
+
+//    =================================================================================== Bookmarks logic
+function createBookmark(e) {
+  e.preventDefault();
+
+  const title = bookmarkInput.value;
+
+  if (title == "") return;
+  const url = encodeURIComponent(bookmarkInput.value);
+
+  fetch(`${apiUrl}/${url}/?app_id=${appId}`)
+    .then((response) => response.json())
+    .then((data) => {
+
+      const bookmark = {
+        title: data.hybridGraph.title,
+        image: data.hybridGraph.image,
+        link: data.hybridGraph.url,
       };
 
-      this.tweets.push(newTweet);
-      this.storeTweet(this.tweets)
-      this.tweetCharacters = "";
-    },
+      bookmarks.push(bookmark); // add a new bookmark to the bookmarks
+      storeBookmarks(bookmarks); // store bookmarks in local storage
+      fillBookmarksList(bookmarks); //update the bookmarks list
+      bookmarkForm.reset(); //clears the input box for next value
+    })
+    .catch((error) => {
+      alert(
+        "a problem occured, please check that your link is correct and try again"
+      );
+    });
+}
 
-    storeTweet(tweets) {
-      localStorage.setItem('tweets', JSON.stringify(tweets))
-    },
+function fillBookmarksList(bookmarks = []) {
+  const bookmarksHtml = bookmarks
+    .map((bookmark, i) => {
+      return `
+        <a href="${bookmark.link}" class="bookmark" target="_blank" data-id="${i}">
+          <div class="img" style="background-image:url('${bookmark.image}"></div>
+           ${bookmark.title} 
+          <span class="glyphicon glyphicon-remove"></span>
+         </a>
+         `;
+    })
+    .join("");
+  bookmarksList.innerHTML = bookmarksHtml;
+}
 
-    deleteLocalTweet(tweetId) {
-      let storedTweets   = JSON.parse(localStorage.getItem('tweets'))
-      storedTweets       = storedTweets.filter(tweet => tweet.id !== tweetId)
+function storeBookmarks(bookmarks = []) {
+  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+}
 
-      localStorage.setItem('tweets', JSON.stringify(storedTweets))
-    },
-
-    removeItem(event) {
-      const tweetId = event.path[4].id;
-      this.tweets = this.tweets.filter((tweet) => tweet.id !== tweetId);
-
-      this.deleteLocalTweet(tweetId)
-    },
-
-    async clipItem(e) {
-      if(!navigator.clipboard) return
-      const tweetId = e.path[4].id
-      const tweet   = this.tweets.find((tweet) => tweet.id === tweetId)
-      const value   = tweet.value
-
-      await navigator.clipboard.writeText(value)
-      this.clipped = true
-      setTimeout(() => {
-        this.clipped = false
-      }, 3500)
-    }
-  },
-
-  computed: {
-    checkTweetLength() {
-      if (this.remainingCharacters === 0) {
-        return;
-      } else {
-        return (this.remainingCharacters =
-          this.maxCharactersLength - this.tweetCharacters.length);
-      }
-    },
-    getTimestamp() {
-      const day = String(new Date());
-      const stringDay = day.split("");
-      const returnDay = stringDay.splice(4, 7).join("");
-
-      return returnDay;
-    },
-    validateTweet() {
-
-    }
-  },
-});
-
-app.mount("#app");
+function removeBookmark(e) {
+  if (!e.target.matches(".glyphicon-remove")) return; // error handling for empty input
+  const index = e.target.parentNode.dataset.id; //find index
+  bookmarks.splice(index, 1); //remove from bookmark
+  fillBookmarksList(bookmarks); //fill the list
+  storeBookmarks(bookmarks); //store back in local storage
+}

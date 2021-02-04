@@ -1,78 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://unpkg.com/vue@next"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-    />
-    <title>L8r | Store your tweets for a later day</title>
-  </head>
-  <body>
-    <div id="app">
-      <div class="status">
-        <div class="tweet-content">
-          <img :src="sourceImg" class="logo" alt="Party on Mars twitter" />
-          <div class="tweet">
-            <a href="https://twitter.com/PartyOnMars_">🌕 </a>
-            <span>@PartyOnMars_ ·{{ getTimestamp }}</span>
-            <p class="tweet-text">Hello, World!</p>
-            <div class="reactions">
-              <span class="like" v-if="liked" @click="like">💖</span>
-              <span class="like" v-else @click="like">
-                <span> ♡ </span>
-              </span>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bookmark application</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="overlay"></div>
+
+    <div class="floater content">
+        <form class="bookmark-form">
+            <div class="floater-top">
+                <input type="text" class="form-control" placeholder="Paste your link here">
             </div>
-          </div>
-        </div>
-        <div class="comment-bar">
-          <textarea
-            placeholder="tweet your reply"
-            v-model="tweetCharacters"
-            @keyup="checkTweetLength"
-          ></textarea>
-          <span class="characters-remaining">
-            {{ remainingCharacters }} characters remaining
-            <button @click="addTweet">Add Tweet</button>
-          </span>
-        </div>
-      </div>
-      <ul>
-        <li class="tweet-list" v-for="tweet in tweets" :id="tweet.id">
-          <div>
-            <div class="tweet-content">
-              <img
-                :src="sourceImg"
-                class="logo small-img"
-                alt="Party on Mars twitter"
-              />
-              <div class="tweet">
-                <a href="https://twitter.com/PartyOnMars_">🌕 </a>
-                <span>@PartyOnMars_ ·{{ getTimestamp }}</span>
-                <p class="tweet-text">{{ tweet.value }}</p>
-              </div>
-              <div class="clipboard" @click="clipItem">
-                <i class="fas fa-clipboard"></i>
-              </div>
-              <div class="delete-button">
-                <i class="fas fa-times" @click="removeItem"></i>
-              </div>
+            
+            <div class="floater-bottom">
+                <button type="submit" class="btn btn-primary btn-sm">Add</button>
             </div>
-          </div>
-        </li>
-      </ul>
-      <transition name="dialog">
-        <div class="clipboard-status" v-if="clipped"> 
-          <p> 🌟  Tweet has been added to clipboard</p>
-        </div>
-    </transition>
+        </form>
     </div>
-  </body>
 
-  <!-- ♡ -->
-
-  <script src="./app.js"></script>
+    <div class="bookmarks-list content"></div>
+    <script src="app.js"></script>
+</body>
 </html>
