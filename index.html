@@ -1,29 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Bookmark application</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <meta
+      property="og:title"
+      content="Bookmarker-ER"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="trees.jpg"
+    />
+    <meta property="og:url" content="https://arinze19.github.io" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div class="overlay"></div>
 
     <div class="floater content">
-        <form class="bookmark-form">
-            <div class="floater-top">
-                <input type="text" class="form-control" placeholder="Paste your link here">
-            </div>
-            
-            <div class="floater-bottom">
-                <button type="submit" class="btn btn-primary btn-sm">Add</button>
-            </div>
-        </form>
+      <form class="bookmark-form">
+        <div class="floater-top">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Paste your link here"
+          />
+        </div>
+
+        <div class="floater-bottom">
+          <button type="submit" class="btn btn-primary btn-sm">Add</button>
+        </div>
+      </form>
     </div>
 
     <div class="bookmarks-list content"></div>
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
