@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
+
+body {
+  background-image: url("https://nbhap.com/wp-content/uploads/2018/06/Coldplay-2008.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Roboto Mono", Helvetica, Arial, Helvetica, sans-serif;
+  height: 100vh;
+}
+
+.laptop-needed {
+    display: none
+}
+
+.container {
+    max-width: 1440px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.key {
+  padding: 1em;
+  border: 1px solid #aca8a8;
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.07s;
+}
+
+.main {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.intro-section {
+  width: 45%;
+}
+
+.intro-section h1 {
+  font-size: 45px;
+}
+
+.intro-section a {
+  color: #e9c120;
+}
+
+.spotify-link {
+  background-color: white;
+  border-radius: 50px;
+  padding: 5px;
+}
+
+.spotify-link img {
+  width: 50px;
+  height: 30px;
+}
+
+.sound-name {
+  color: #e9c120;
+}
+
+kbd {
+  display: block;
+  font-size: 24px;
+  font-family: monospace, Arial, Helvetica, sans-serif;
+  color: #f0f8ff;
+}
+
+.key:hover {
+  cursor: pointer;
+}
+
+.key-row {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  position: absolute;
+  top: 60vh;
+  left: 10%;
+  flex-wrap: wrap;
+}
+
+.playing {
+  border-color: #e9c120;
+  box-shadow: 0 0 10px #ffc600;
+  transform: scale(1.1);
+}
+
+@media(max-width: 1024px) {
+    .laptop-needed {
+        display: grid;
+        place-content: center;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+        background-color: aliceblue;
+        top: 0;
+        left: 0;
+    }
+
+    .container {
+        display: none;
+    }
+}

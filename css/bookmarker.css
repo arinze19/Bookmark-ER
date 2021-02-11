@@ -1,8 +1,9 @@
 body, .jumbotron { padding: 30px; } 
 
 body {
-    background-image: url('trees.jpg');
+    background-image: url('/assets/trees.jpg');
     width: 100%;
+    height: 100vh;
     background-size: cover;
     background-repeat: no-repeat; 
 }

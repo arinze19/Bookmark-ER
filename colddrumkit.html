@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coldplay Drum Kit</title>
+    <link rel="stylesheet" href="/css/coldpiano.css" />
+  </head>
+  <body>
+    <div class="laptop-needed">
+        <h2>Oops. this application requires a laptop for better experience</h2>
+    </div>
+    <div class="container">
+      <div class="main">
+        <div class="intro-section">
+          <h1>Cold Drums 🥁 </h1>
+          <p>
+            Play along with chris martin and the gang and hold a concert right
+            in your bedroom.
+            <br />
+            Made by Obi Arinze. Based on
+            <a href="https://javascript30.com" target="_blank"
+              >JavaScript30 challenge</a
+            >
+            by
+            <a href="https://https://twitter.com/wesbos" target="_blank"
+              >Wes Bos</a
+            >
+          </p>
+        </div>
+
+        <a href="https://spotify.com/coldplay" class="spotify-link">
+            <img src="/assets/spotify.svg" />
+        </a>
+      </div>
+      <div class="key-row">
+        <div class="key" data-key="65">
+          <kbd>A</kbd>
+          <span class="sound-name">Clap</span>
+        </div>
+        <div class="key" data-key="83">
+          <kbd>S</kbd>
+          <span class="sound-name">Hihat</span>
+        </div>
+        <div class="key" data-key="68">
+          <kbd>D</kbd>
+          <span class="sound-name">Kick</span>
+        </div>
+        <div class="key" data-key="70">
+          <kbd>F</kbd>
+          <span class="sound-name">Openhat</span>
+        </div>
+        <div class="key" data-key="71">
+          <kbd>G</kbd>
+          <span class="sound-name">Boom</span>
+        </div>
+        <div class="key" data-key="72">
+          <kbd>H</kbd>
+          <span class="sound-name">Ride</span>
+        </div>
+        <div class="key" data-key="74">
+          <kbd>J</kbd>
+          <span class="sound-name">Snare</span>
+        </div>
+        <div class="key" data-key="75">
+          <kbd>K</kbd>
+          <span class="sound-name">Tom</span>
+        </div>
+        <div class="key" data-key="76">
+          <kbd>L</kbd>
+          <span class="sound-name">Tink</span>
+        </div>
+      </div>
+
+      <audio src="/assets/audio/clap.mp3" data-key="65"></audio>
+      <audio src="/assets/audio/hihat.mp3" data-key="83"></audio>
+      <audio src="/assets/audio/kick.mp3" data-key="68"></audio>
+      <audio src="/assets/audio/open-hat.mp3" data-key="70"></audio>
+      <audio src="/assets/audio/Boom.mp3" data-key="71"></audio>
+      <audio src="/assets/audio/ride.mp3" data-key="72"></audio>
+      <audio src="/assets/audio/snare1.mp3" data-key="74"></audio>
+      <audio src="/assets/audio/tom.mp3" data-key="75"></audio>
+      <audio src="/assets/audio/tink.mp3" data-key="76"></audio>
+    </div>
+  </body>
+  <script src="/js/coldpiano.js"></script>
+</html>
