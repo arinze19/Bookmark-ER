@@ -1,21 +1,21 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
 
 body {
-  background-image: url("https://nbhap.com/wp-content/uploads/2018/06/Coldplay-2008.jpg");
+  background-image: url('https://nbhap.com/wp-content/uploads/2018/06/Coldplay-2008.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  font-family: "Roboto Mono", Helvetica, Arial, Helvetica, sans-serif;
+  font-family: 'Roboto Mono', Helvetica, Arial, Helvetica, sans-serif;
   height: 100vh;
 }
 
 .laptop-needed {
-    display: none
+  display: none;
 }
 
 .container {
-    max-width: 1440px;
-    position: relative;
-    margin: 0 auto;
+  max-width: 1440px;
+  position: relative;
+  margin: 0 auto;
 }
 
 .key {
@@ -49,14 +49,22 @@ body {
 }
 
 .spotify-link {
-  background-color: white;
-  border-radius: 50px;
-  padding: 5px;
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  gap: 10px;
+  background-color: #13da13;
+  border-radius: 20px;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
 }
 
 .spotify-link img {
-  width: 50px;
-  height: 30px;
+  justify-self: end;
+  width: 12px;
+  height: 12px;
+  padding: 0;
 }
 
 .sound-name {
@@ -90,20 +98,20 @@ kbd {
   transform: scale(1.1);
 }
 
-@media(max-width: 1024px) {
-    .laptop-needed {
-        display: grid;
-        place-content: center;
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        text-align: center;
-        background-color: aliceblue;
-        top: 0;
-        left: 0;
-    }
+@media (max-width: 1024px) {
+  .laptop-needed {
+    display: grid;
+    place-content: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    background-color: aliceblue;
+    top: 0;
+    left: 0;
+  }
 
-    .container {
-        display: none;
-    }
+  .container {
+    display: none;
+  }
 }

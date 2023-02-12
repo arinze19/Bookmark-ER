@@ -57,6 +57,7 @@ function createBookmark(e) {
       bookmarkForm.reset(); //clears the input box for next value
     })
     .catch((error) => {
+      console.log(String(error.message ?? error))
       alert(
         "a problem occured, please check that your link is correct and try again"
       );
@@ -67,11 +68,13 @@ function fillBookmarksList(bookmarks = []) {
   const bookmarksHtml = bookmarks
     .map((bookmark, i) => {
       return `
-        <a href="${bookmark.link}" class="bookmark" target="_blank" data-id="${i}">
-          <div class="img" style="background-image:url('${bookmark.image}"></div>
-           ${bookmark.title} 
-          <span class="glyphicon glyphicon-remove"></span>
-         </a>
+          <div class="bookmark" data-id="${i}">
+            <div class="img" style="background-image:url('${bookmark.image}"></div>
+            <a href="${bookmark.link}" target="_blank">
+            ${bookmark.title} 
+            </a>
+            <span class="glyphicon glyphicon-remove"></span>
+          </div>
          `;
     })
     .join("");
